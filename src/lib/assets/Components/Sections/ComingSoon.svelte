@@ -2,7 +2,7 @@
   import { Sparkles, Clock, FolderGitIcon, ExternalLink, ShieldCheck } from '@lucide/svelte';
 
   // Replace this with your actual Google Form URL
-  const googleFormUrl:string = "https://forms.google.com";
+  const googleFormUrl:string = "https://docs.google.com/forms/d/e/1FAIpQLSc8LdQriqriVsoRIH6MiDRIyBWV-pdUtWoogd7FaD51AE6CHQ/viewform?usp=publish-editor";
 </script>
 
 <section id="coming-soon" class="coming-soon-section">
