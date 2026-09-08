@@ -1,0 +1,428 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@font-face {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    src: url('/Fonts/PlusJakartaSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono', monospace;
+    src: url('/Fonts/JetBrainsMono-VariableFont_wght.ttf');
+}
+
+:root {
+  /* ==========================================================================
+     1. Brand & Semantic Colors (Dark Theme)
+     ========================================================================= */
+  /* Base Backgrounds (Based on deep midnight from logo) */
+  --bg-app: #0A0F1D;
+  --bg-surface: #12192A;
+  --bg-surface-hover: #1D283F;
+
+  /* Primary: Emerald Green (From Icon - Security + Trust) */
+  --primary: #34D399;
+  --primary-hover: #10B981;
+  --primary-foreground: #022C22; /* Dark contrast for text on primary */
+
+  /* Secondary: Neutral Data Grey (From Text - Stability) */
+  --secondary: #94A3B8;
+  --secondary-hover: #CBD5E1;
+  --secondary-foreground: #0A0F1D;
+
+  /* Accent: Neon Pulse Violet (Highlighting Encryption/PQC) */
+  --accent: #A78BFA;
+  --accent-foreground: #FFFFFF;
+
+  /* Text Hierarchy */
+  --text-main: #F1F5F9;  /* Light gray-white (From logo text) */
+  --text-muted: #94A3B8; /* For secondary descriptors */
+  --text-dim: #64748B;   /* For inactive/placeholder elements */
+
+  /* Borders & Dividers */
+  --border: #1E293B;
+  --border-focus: #34D399;
+
+  /* ==========================================================================
+     2. Shadows, Glows, and Effects
+     ========================================================================= */
+  /* Subtle primary glow (used sparingly on key elements) */
+  --glow-primary: 0 0 20px rgba(52, 211, 153, 0.3);
+  --glow-accent: 0 0 20px rgba(167, 139, 250, 0.3);
+
+  /* Elevation Shadows (Darker, diffuse shadows) */
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 20px -4px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 50px -8px rgba(0, 0, 0, 0.8);
+  /* Multi-layered 3D depth shadow with emerald ambient glow */
+  --shadow-3d-primary: 
+    0 1px 0 0 #34D399,                          /* Edge highlight (Top light refraction) */
+    0 4px 0 0 #022C22,                          /* Bevel depth (Hard 3D extrusion) */
+    0 8px 12px -2px rgba(2, 44, 34, 0.7),        /* Dark immediate drop shadow */
+    0 14px 28px -4px rgba(52, 211, 153, 0.35);    /* Soft outer ambient emerald glow */
+
+  /* ==========================================================================
+     3. Curvy - Playful Border Radius (5 Grades of em)
+     ========================================================================= */
+  --radius-xs: 0.25em; /*  4px - Tiny tags/badges */
+  --radius-sm: 0.5em;  /*  8px - Tiny inputs, small buttons */
+  --radius-md: 1.0em;  /* 16px - Standard buttons, inputs, small cards */
+  --radius-lg: 1.75em; /* 28px - Cards, dropdowns, sections */
+  --radius-xl: 3.0em;  /* 48px - Main app containers, hero pills */
+
+  /* ==========================================================================
+     4. Typography Scale
+     ========================================================================= */
+  --font-family-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+
+  /* Font Sizes */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1.0rem;   /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.5rem;     /* 24px */
+  --font-xxl: 2.25rem;   /* 36px */
+  --font-display: 4.0rem;/* 64px - Hero titles */
+
+	/* ==========================================================================
+	   5. Spacing & Layout
+	   ========================================================================== */
+
+	/* Micro spacing */
+	--space-1: 0.25rem; /*  4px */
+	--space-2: 0.5rem;  /*  8px */
+	--space-3: 0.75rem; /* 12px */
+
+	/* Standard spacing */
+	--space-4: 1rem;    /* 16px */
+	--space-5: 1.25rem; /* 20px */
+	--space-6: 1.5rem;  /* 24px */
+
+	/* Large spacing */
+	--space-7: 1.75rem; /* 28px */
+	--space-8: 2rem;    /* 32px */
+	--space-10: 2.5rem; /* 40px */
+	--space-12: 3rem;   /* 48px */
+
+	/* Section spacing */
+	--space-14: 3.5rem; /* 56px */
+	--space-16: 4rem;   /* 64px */
+	--space-20: 5rem;   /* 80px */
+	--space-24: 6rem;   /* 96px */
+
+	/* ==========================================================================
+	   Container & Layout
+	   ========================================================================== */
+
+	--container-sm: 640px;
+	--container-md: 768px;
+	--container-lg: 1024px;
+	--container-xl: 1200px;
+
+	--page-padding: 1.25rem; /* 20px */
+	--page-padding-mobile: 0.875rem; /* 14px */
+
+	/* ==========================================================================
+	   Component Spacing
+	   ========================================================================== */
+
+	--header-height: 76px;
+	--header-height-mobile: 68px;
+
+	--button-padding-y: 0.625rem;  /* 10px */
+	--button-padding-x: 1rem;      /* 16px */
+
+	--input-padding-y: 0.75rem;    /* 12px */
+	--input-padding-x: 1rem;       /* 16px */
+
+	--card-padding: 1.5rem;        /* 24px */
+	--card-padding-lg: 2rem;       /* 32px */
+
+	/* ==========================================================================
+	   Gaps
+	   ========================================================================== */
+
+	--gap-xs: 0.5rem;  /*  8px */
+	--gap-sm: 0.75rem; /* 12px */
+	--gap-md: 1rem;    /* 16px */
+	--gap-lg: 1.5rem;  /* 24px */
+	--gap-xl: 2rem;    /* 32px */
+}
+
+/* ==========================================================================
+   Global Base & Reset Styles (html & body)
+   ========================================================================== */
+html {
+  /* Ensure proper box model sizing across all elements */
+  box-sizing: border-box;
+  
+  /* Smooth scrolling for anchor links and navigation */
+  scroll-behavior: smooth;
+  
+  /* Font size base definition (1rem = 16px) */
+  font-size: 16px;
+  
+  /* Prevent horizontal scroll overflow on mobile viewports */
+  overflow-x: hidden;
+  
+  /* Optimize text rendering for modern screens */
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  /* Minimal reset */
+  margin: 0;
+  padding: 0;
+  
+  /* Application background & text colors from your CSS root variables */
+  background-color: var(--bg-app, #0A0F1D);
+  color: var(--text-main, #F1F5F9);
+  
+  /* Typography setup */
+  font-family: var(--font-family-body, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
+  font-size: var(--font-base, 1rem);
+  line-height: 1.6;
+  
+  /* Font smoothing & anti-aliasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Mobile viewport setup & sticky footer support */
+  min-height: 100vh;
+  width: 100%;
+  
+  /* Custom selection color (highlight text in primary green accent) */
+  ::selection {
+    background-color: var(--primary, #34D399);
+    color: var(--primary-foreground, #022C22);
+  }
+}
+
+/* ANIMATIONS */
+
+@keyframes gelatine {
+  from, to { transform: scale(1, 1); }
+  25% { transform: scale(0.9, 1.1); }
+  50% { transform: scale(1.1, 0.9); }
+  75% { transform: scale(0.95, 1.05); }
+}
+
+@keyframes pulse {
+  from { transform: scale(0.8); }
+  to { transform: scale(1.2); }
+}
+
+@keyframes hithere {
+  30% { transform: scale(1.2); }
+  40%, 60% { transform: rotate(-20deg) scale(1.2); }
+  50% { transform: rotate(20deg) scale(1.2); }
+  70% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes grow {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+/* Use a dot, to show grow then hithere 
+then continue pulsing to write text on splashscreen */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes bounce {
+    70% { transform:translateY(0%); }
+    80% { transform:translateY(-15%); }
+    90% { transform:translateY(0%); }
+    95% { transform:translateY(-7%); }
+    97% { transform:translateY(0%); }
+    99% { transform:translateY(-3%); }
+    100% { transform:translateY(0); }
+}
+/* all dropdowns should use a mix of bounce and gelatine */
+
+@keyframes dance {
+      0%{
+        white-space: nowrap;
+        width: 10%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-ellipsis:end;
+        visibility: visible;
+      }
+      20%{
+        white-space: nowrap;
+        width: 20%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-ellipsis:end;
+        visibility: visible;
+      }
+      40%{
+        white-space: nowrap;
+        width: 40%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-ellipsis:end;
+        visibility: visible;
+      }
+      60%{
+        white-space: nowrap;
+        width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-ellipsis:end;
+        visibility: visible;
+      }
+      100%{
+        width: 100%;
+        visibility: visible;
+      }
+  }
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.25);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* END OF ANIMATIONS */
+
+.dropdown{
+  animation: bounce .65s ease-out, gelatine .75s .35s ease-in-out;
+}
+
+.btn{
+  display: flex;
+  gap: var(--gap-sm);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  box-sizing: border-box;
+  width: fit-content;
+  border-radius: var(--radius-lg);
+  transition: transform 0.32s ease-in-out;
+  font-family: var(--font-family-body);
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.btn:hover{
+  transform: translateY(-10%);
+}
+.btn.small{border-radius: var(--radius-md);font-size: var(--font-sm);}
+
+.btn-primary{
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  color: var(--primary-foreground);
+  font-family: var(--font-family-mono);
+  font-weight: 600;
+  border: none;
+  box-shadow: var(--shadow-md); 
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px -2px rgba(52, 211, 153, 0.45);
+}
+
+.btn-ghost{
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-weight: bold;
+  background-color: var(--primary-foreground);
+}
+
+.btn.fab{
+  flex-direction: column;
+  border-radius: 43%;
+  position:absolute;
+  bottom:3.5%;
+  right:3.5%;
+  box-shadow: var(--shadow-md);
+  justify-content: center;
+  gap: 0;
+  padding: 1.6% 3.6%;
+}
+
+.btn.fab.active{
+  animation: gelatine 1.05s ease-in-out;
+}
+
+.danger-text{
+  color:#ff2500;
+}
+.success-text{
+  color: var(--primary);
+}
+
+
+/* From mobiles to tablets */
+@media (max-width: 768px) {
+  .menu{
+    display: flex;
+  }
+  #contact-btn{
+    display: none;
+  }
+}
+
+/* for tablets and beyond */
+@media (min-width: 768px){
+  .circle{
+    width: 10dvw !important;
+    height: 10dvw !important;
+  }
+  .btn.fab{
+    padding: 1.6% 2.2%;
+  }
+}
+
+/* tablets only */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+/* laptops only */
+@media (min-width: 1024px) {
+  .menu{
+    display: none;
+  }
+  #contact-btn{
+    display: flex;
+  }
+}
